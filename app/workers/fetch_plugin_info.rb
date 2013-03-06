@@ -11,6 +11,7 @@ class FetchPluginInfo
       rawdoc = open("http://wordpress.org/extend/plugins/#{plugin.name}")
       doc = Nokogiri::HTML(rawdoc)
     rescue OpenURI::HTTPError => ex
+      puts ex
       if ex == "404 Not Found"
         plugin.dead = true
         plugin.save
