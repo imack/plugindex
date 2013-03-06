@@ -78,6 +78,7 @@ GEM
       rspec (>= 2.9)
     moped (1.4.3)
     multi_json (1.6.1)
+    nokogiri (1.5.6)
     origin (1.0.11)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
@@ -186,6 +187,7 @@ DEPENDENCIES
   jquery-rails
   mongoid (>= 3.1.1)
   mongoid-rspec (>= 1.6.0)
+  nokogiri
   quiet_assets (>= 1.0.1)
   rails (= 3.2.12)
   redis-namespace
