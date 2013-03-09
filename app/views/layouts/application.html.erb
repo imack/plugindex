@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Plugindex" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "WP Plugindex: Ranking The Best Wordpress Plugins" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "WP Plugindex: Ranking The Best Wordpress Plugins" %></title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+
+<body class="<%= controller_name %> <%= action_name %>">
+<div id="wrap">
+  <div id="main">
+      <!-- Header starts -->
+      <header>
+        <div class="container clear-top">
+          <div class="row">
+
+            <div class="span4">
+              <!-- Logo. Use class "color" to add color to the text. -->
+              <div class="logo">
+                <h1><a href="#">WP<span class="color bold">plugindex</span></a></h1>
+                <p class="meta">The Best and Trending WordPress Plugins</p>
+              </div>
             </div>
+
+            <div class="span8">
+            </div>
+
           </div>
-          <footer>
-          </footer>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
-  </body>
+      </header>
+
+      <!-- Seperator -->
+
+      <div class="sep"></div>
+
+      <!-- Header ends -->
+      <!-- Page content starts -->
+
+      <div class="content">
+        <div class="container">
+          <%= render 'layouts/messages' %>
+          <%=  yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Page content ends -->
+
+<!-- Footer starts -->
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <!-- Copyright info -->
+        <p class="copy" style="margin-top:7px;">Copyright &copy; 2013 | <a href="#">WPPlugindex</a></p>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</footer>
+
+<!-- Footer ends -->
+</body>
 </html>
