@@ -1,9 +1,10 @@
 class Plugin
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :name, type: String
-  field :past_week, type: Float
-  field :past_month, type: Float
+  field :percent_growth, type: Float
+  field :weekly_download, type: Integer
   field :last_update, type: DateTime
   field :total_downloads, type: Integer
 
