@@ -3,7 +3,6 @@ class Reading
   include Mongoid::Timestamps
 
   field :downloads, type: Integer
-  field :percent_change, type:Float
 
   embedded_in :plugin
 
