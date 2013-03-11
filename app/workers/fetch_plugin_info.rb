@@ -37,6 +37,17 @@ class FetchPluginInfo
       end
     end
 
+    if plugin.long_name.nil?
+      puts "Looking for longname"
+      doc.css('h2').each do |h2|
+        if h2['itemprop'] == "name"
+          long_name = h2.text
+          puts long_name
+          plugin.long_name = long_name
+        end
+      end
+    end
+
     plugin.last_update = last_update
     plugin.total_downloads = download_count
 
