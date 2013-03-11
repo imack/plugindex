@@ -30,4 +30,4 @@ Plugindex::Application.configure do
   config.assets.debug = true
 end
 
-Resque.inline = true
+#Resque.inline = true
