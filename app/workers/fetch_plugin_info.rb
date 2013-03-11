@@ -6,6 +6,7 @@ class FetchPluginInfo
   def self.perform(plugin_id)
 
     plugin = Plugin.find( plugin_id )
+    puts plugin.name
 
     begin
       rawdoc = open("http://wordpress.org/extend/plugins/#{plugin.name}")
@@ -38,6 +39,17 @@ class FetchPluginInfo
 
     plugin.last_update = last_update
     plugin.total_downloads = download_count
+
+    if plugin.readings.count > 0
+      latest = plugin.readings.last
+      last_downloads = latest.downloads
+
+      plugin.percent_growth = (download_count - last_downloads) / (last_downloads * 1.0)
+      puts "percent growth: #{plugin.percent_growth}"
+      plugin.weekly_download =  download_count - last_downloads
+      puts "weekly downloads: #{plugin.weekly_download}"
+    end
+
     plugin.readings.create( :downloads => download_count )
     plugin.save
 
