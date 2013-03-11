@@ -13,7 +13,9 @@
       <div class="plist">
         <!-- List -->
         <ul>
-          <li>Hottest Plugin</li>
+          <% @stats.hottest.each do |plugin| %>
+            <li><%= plugin[1] %><br><%= plugin[2] %>%</li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -25,7 +27,11 @@
       </div>
       <div class="plist">
         <ul>
-          <li>Most Active Download</li>
+          <ul>
+            <% @stats.top_weekly.each do |plugin| %>
+                <li><%= plugin[1] %><br><%= plugin[2] %></li>
+            <% end %>
+          </ul>
         </ul>
       </div>
     </div>
@@ -42,7 +48,9 @@
       </div>
       <div class="plist">
         <ul>
-          <li>New Plugin</li>
+          <% @stats.newest.each do |plugin| %>
+              <li><%= plugin[1] %><br><%= plugin[2] %></li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -54,7 +62,9 @@
       </div>
       <div class="plist">
         <ul>
-          <li>Total Downloads</li>
+          <% @stats.total.each do |plugin| %>
+              <li><%= plugin[1] %><br><%= plugin[2] %></li>
+          <% end %>
         </ul>
       </div>
     </div>
