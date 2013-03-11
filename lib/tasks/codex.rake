@@ -13,8 +13,14 @@ namespace "codex" do
       name.slice!(-1)
 
       plugin = Plugin.find_or_create_by(name: name)
-      puts plugin.name
-      Resque.enqueue( FetchPluginInfo, plugin.id)
+
+      if plugin.dead || ( !plugin.last_update.nil? && plugin.last_update < 2.years.ago )
+        puts "skipping #{plugin.name}"
+      else
+        puts "grabbing #{plugin.name}"
+        Resque.enqueue( FetchPluginInfo, plugin.id)
+      end
+
     end
   end
 end
