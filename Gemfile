@@ -20,3 +20,7 @@ gem "mongoid-rspec", ">= 1.6.0", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
 gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
 gem "quiet_assets", ">= 1.0.1", :group => :development
+
+gem "capistrano"
+gem "rvm-capistrano"
+
