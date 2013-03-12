@@ -14,7 +14,7 @@
         <!-- List -->
         <ul>
           <% @stats.hottest.each do |plugin| %>
-            <li><%= plugin[1] %><br><%= plugin[2] %>%</li>
+            <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %>%</li>
           <% end %>
         </ul>
       </div>
@@ -29,7 +29,7 @@
         <ul>
           <ul>
             <% @stats.top_weekly.each do |plugin| %>
-                <li><%= plugin[1] %><br><%= plugin[2] %></li>
+                <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %></li>
             <% end %>
           </ul>
         </ul>
@@ -49,7 +49,7 @@
       <div class="plist">
         <ul>
           <% @stats.newest.each do |plugin| %>
-              <li><%= plugin[1] %><br><%= plugin[2] %></li>
+              <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %></li>
           <% end %>
         </ul>
       </div>
@@ -63,7 +63,7 @@
       <div class="plist">
         <ul>
           <% @stats.total.each do |plugin| %>
-              <li><%= plugin[1] %><br><%= plugin[2] %></li>
+              <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %></li>
           <% end %>
         </ul>
       </div>
