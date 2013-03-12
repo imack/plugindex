@@ -1,5 +1,34 @@
-<!-- Pricing table -->
-<!-- Price details. Note down the class name before you edit. -->
+<div class="cta">
+  <div class="container">
+    <div class="row">
+      <div class="span5">
+        <div class="ctas">
+          <!-- Title and Para -->
+          <h5>Get Update Notifications on Twitter:</h5>
+          <div class="ctas">
+            <a href="https://twitter.com/wpplugindex" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @wpplugindex</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+        </div>
+      </div>
+      <div class="span4">
+        <div class="ctas">
+          <h5>Share:</h5>
+          <!-- List -->
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wpplugindex.com" data-via="wpplugindex">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          <br>
+          <script type="text/javascript" src="http://en.reddit.com/static/button/button1.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <span class="span3 offset9"><%= @stats.created_at.strftime("Published %b %d,%Y")  %></span>
+</div>
+
 <div class="row">
 
   <div class="span6">
@@ -14,7 +43,7 @@
         <!-- List -->
         <ul>
           <% @stats.hottest.each do |plugin| %>
-            <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %>%</li>
+            <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %>% increase</li>
           <% end %>
         </ul>
       </div>
@@ -23,13 +52,13 @@
     <!-- Pricing table #2. Class name "col-right" -->
     <div class="col-right pricel center">
       <div class="phead-top">
-        <h4>Top Downloaded</h4>
+        <h4>Top Weekly</h4>
       </div>
       <div class="plist">
         <ul>
           <ul>
             <% @stats.top_weekly.each do |plugin| %>
-                <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %></li>
+                <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= number_with_delimiter( plugin[3] ) %> Downloads</li>
             <% end %>
           </ul>
         </ul>
@@ -49,7 +78,7 @@
       <div class="plist">
         <ul>
           <% @stats.newest.each do |plugin| %>
-              <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %></li>
+              <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= number_with_delimiter( plugin[3] ) %> Downloads</li>
           <% end %>
         </ul>
       </div>
@@ -63,7 +92,7 @@
       <div class="plist">
         <ul>
           <% @stats.total.each do |plugin| %>
-              <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %></li>
+              <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= number_with_delimiter( plugin[3] ) %> Downloads</li>
           <% end %>
         </ul>
       </div>
@@ -74,29 +103,3 @@
   </div>
 </div>
 
-<div class="cta">
-  <div class="container">
-    <div class="row">
-      <div class="span5">
-        <div class="ctas">
-          <!-- Title and Para -->
-          <h5>Get Update Notifications on Twitter:</h5>
-          <div class="ctas">
-            <a href="https://twitter.com/wpplugindex" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @wpplugindex</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          </div>
-        </div>
-      </div>
-      <div class="span4">
-        <div class="ctas">
-          <!-- List -->
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wpplugindex.com" data-via="wpplugindex">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          <br>
-          <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwpplugindex.com&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35&amp;appId=515666301817401" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>
-          <script type="text/javascript" src="http://en.reddit.com/static/button/button1.js"></script>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
