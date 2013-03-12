@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'PP'
 
 PLUGINS_INDEX = "http://plugins.svn.wordpress.org"
 
@@ -54,7 +53,6 @@ namespace "codex" do
       stats.top_weekly << [plugin.id, plugin.display_name, plugin.name, plugin.weekly_download.to_s]
     end
 
-    PP.pp stats
     stats.save
 
   end
