@@ -1,19 +1,3 @@
-<div class="cta">
-  <div class="container">
-    <div class="row-fluid">
-        <div class="span2">
-            <div class="ctas">
-                <script type="text/javascript" src="http://en.reddit.com/static/button/button3.js"></script>
-            </div>
-        </div>
-      <div class="span8">
-        <div class="ctas">
-          <h4>It's our launch day! Be sure to give your feedback in the Reddit comments</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="row">
   <span class="span8"></span>
@@ -33,7 +17,7 @@
       <div class="plist">
         <!-- List -->
         <ul>
-          <% @stats.hottest.each do |plugin| %>
+          <% @stats.hottest.first(10).each do |plugin| %>
             <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= plugin[3] %>% increase</li>
           <% end %>
         </ul>
@@ -48,7 +32,7 @@
       <div class="plist">
         <ul>
           <ul>
-            <% @stats.top_weekly.each do |plugin| %>
+            <% @stats.top_weekly.first(10).each do |plugin| %>
                 <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= number_with_delimiter( plugin[3] ) %> Downloads</li>
             <% end %>
           </ul>
@@ -68,7 +52,7 @@
       </div>
       <div class="plist">
         <ul>
-          <% @stats.newest.each do |plugin| %>
+          <% @stats.newest.first(10).each do |plugin| %>
               <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= number_with_delimiter( plugin[3] ) %> Downloads</li>
           <% end %>
         </ul>
@@ -82,7 +66,7 @@
       </div>
       <div class="plist">
         <ul>
-          <% @stats.total.each do |plugin| %>
+          <% @stats.total.first(10).each do |plugin| %>
               <li><%= link_to plugin[1], wordpress_url( plugin[2] ) %><br><%= number_with_delimiter( plugin[3] ) %> Downloads</li>
           <% end %>
         </ul>
