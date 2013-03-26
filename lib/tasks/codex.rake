@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'PP'
 
 PLUGINS_INDEX = "http://plugins.svn.wordpress.org"
 
@@ -30,30 +31,32 @@ namespace "codex" do
 
     stats = Stats.new
     puts "==========New Plugins=========="
-    Plugin.where(:created_at.gt => 6.days.ago, :total_downloads.gt => 0).order_by([:total_downloads, :desc]).limit(10).each do |plugin|
+    Plugin.where(:created_at.gt => 6.days.ago, :total_downloads.gt => 0).order_by([:total_downloads, :desc]).limit(100).each do |plugin|
       puts "#{plugin.name}: #{plugin.total_downloads}"
       stats.newest << [plugin.id, plugin.display_name, plugin.name, plugin.total_downloads.to_s]
     end
 
     puts "==========Hot Plugins=========="
-    Plugin.where({:updated_at.gt => 6.days.ago, :total_downloads.gt => 1000}).order_by([:percent_growth, :desc]).limit(10).each do |plugin|
+    Plugin.where({:updated_at.gt => 6.days.ago, :total_downloads.gt => 1000}).order_by([:percent_growth, :desc]).limit(100).each do |plugin|
       puts "#{plugin.name}: #{(plugin.percent_growth * 100).round(2)  }%"
       stats.hottest << [plugin.id, plugin.display_name, plugin.name, (plugin.percent_growth * 100).round(2).to_s]
     end
 
     puts "==========Most Downloaded Total=========="
-    Plugin.where({:updated_at.gt => 6.days.ago, :total_downloads.ne => nil}).order_by([:total_downloads, :desc]).limit(10).each do |plugin|
+    Plugin.where({:updated_at.gt => 6.days.ago, :total_downloads.ne => nil}).order_by([:total_downloads, :desc]).limit(100).each do |plugin|
       puts "#{plugin.name}: #{plugin.total_downloads}"
       stats.total << [plugin.id, plugin.display_name, plugin.name, plugin.total_downloads.to_s]
     end
 
     puts "==========Most Downloaded Weekly=========="
-    Plugin.where({:updated_at.gt => 6.days.ago, :weekly_download.ne => nil}).order_by([:weekly_download, :desc]).limit(10).each do |plugin|
+    Plugin.where({:updated_at.gt => 6.days.ago, :weekly_download.ne => nil}).order_by([:weekly_download, :desc]).limit(100).each do |plugin|
       puts "#{plugin.name}: #{plugin.weekly_download}"
       stats.top_weekly << [plugin.id, plugin.display_name, plugin.name, plugin.weekly_download.to_s]
     end
 
     stats.save
+
+    PP.pp stats
 
   end
 
